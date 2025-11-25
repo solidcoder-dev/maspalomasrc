@@ -1,8 +1,14 @@
+import type { Club } from "../domain/club";
+
 type ClubWelcomeProps = {
   tenant: string;
+  club: Club | null;
+  error: string | null;
 };
 
-function ClubWelcome({ tenant }: ClubWelcomeProps) {
+function ClubWelcome({ tenant, club, error }: ClubWelcomeProps) {
+  const isLoading = !club && !error;
+
   return (
     <section className="card shadow-sm">
       <div className="card-body">
@@ -12,11 +18,21 @@ function ClubWelcome({ tenant }: ClubWelcomeProps) {
           </p>
           <span className="badge bg-primary text-uppercase">{tenant}</span>
         </div>
-        <h1 className="card-title h3 fw-bold mb-3">Bienvenido al club</h1>
-        <p className="card-text text-secondary mb-0">
-          Este es el punto de partida. Usa este componente para extender la
-          experiencia de tu club con más secciones y acciones.
-        </p>
+        {isLoading && (
+          <p className="card-text text-secondary mb-0">Cargando club...</p>
+        )}
+        {error && (
+          <p className="card-text text-danger mb-0" role="alert">
+            {error}
+          </p>
+        )}
+        {club && !error && (
+          <>
+            <h1 className="card-title h3 fw-bold mb-2">{club.name}</h1>
+            <p className="text-secondary fw-semibold mb-3">{club.tagline}</p>
+            <p className="card-text text-secondary mb-0">{club.description}</p>
+          </>
+        )}
       </div>
     </section>
   );
