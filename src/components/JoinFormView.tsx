@@ -1,4 +1,5 @@
 import type { FormEvent } from "react";
+import { Link } from "react-router-dom";
 
 export type JoinFormValues = {
   nombre: string;
@@ -21,6 +22,7 @@ type JoinFormViewProps = {
   onFileChange: (file: File | null) => void;
   onCheckboxChange: (checked: boolean) => void;
   errors: Partial<Record<keyof JoinFormValues, string>>;
+  submitDisabled: boolean;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 };
 
@@ -30,6 +32,7 @@ function JoinFormView({
   onFileChange,
   onCheckboxChange,
   errors,
+  submitDisabled,
   onSubmit
 }: JoinFormViewProps) {
   return (
@@ -229,7 +232,9 @@ function JoinFormView({
             onChange={(e) => onCheckboxChange(e.target.checked)}
           />
           <label className="form-check-label" htmlFor="privacidad">
-            He leído y acepto la política de privacidad y el aviso legal
+            He leído y acepto la{" "}
+            <Link to="/privacidad">política de privacidad</Link> y el{" "}
+            <Link to="/aviso-legal">aviso legal</Link>
           </label>
           {errors.acceptPrivacy && (
             <div className="invalid-feedback d-block">
@@ -239,7 +244,7 @@ function JoinFormView({
         </div>
       </div>
       <div className="col-12">
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" disabled={submitDisabled}>
           Enviar solicitud
         </button>
       </div>

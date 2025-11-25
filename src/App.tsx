@@ -4,6 +4,8 @@ import ClubWelcome from "./components/ClubWelcome";
 import ContactSection from "./components/ContactSection";
 import JoinSection from "./components/JoinSection";
 import NavBar from "./components/NavBar";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import LegalNotice from "./components/LegalNotice";
 import { createJsonClubAdapter } from "./adapters/jsonClubAdapter";
 import type { Club } from "./domain/club";
 
@@ -42,14 +44,12 @@ function App() {
               <Routes>
                 <Route
                   path="/"
-                  element={
-                    <>
-                      <ClubWelcome tenant={tenant} club={club} error={error} />
-                    </>
-                  }
+                  element={<ClubWelcome tenant={tenant} club={club} error={error} />}
                 />
                 <Route path="/contacto" element={<ContactSection />} />
                 <Route path="/unete" element={<JoinSection />} />
+                <Route path="/privacidad" element={<PrivacyPolicy />} />
+                <Route path="/aviso-legal" element={<LegalNotice />} />
               </Routes>
             </div>
           </div>

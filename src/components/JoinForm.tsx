@@ -23,18 +23,27 @@ function JoinForm() {
   >({});
 
   const handleChange = (field: keyof JoinFormValues, value: string) => {
-    setValues((prev) => ({ ...prev, [field]: value }));
-    setErrors((prev) => ({ ...prev, [field]: undefined }));
+    setValues((prev) => {
+      const next = { ...prev, [field]: value };
+      setErrors(validate(next));
+      return next;
+    });
   };
 
   const handleFileChange = (file: File | null) => {
-    setValues((prev) => ({ ...prev, justificante: file }));
-    setErrors((prev) => ({ ...prev, justificante: undefined }));
+    setValues((prev) => {
+      const next = { ...prev, justificante: file };
+      setErrors(validate(next));
+      return next;
+    });
   };
 
   const handleCheckboxChange = (checked: boolean) => {
-    setValues((prev) => ({ ...prev, acceptPrivacy: checked }));
-    setErrors((prev) => ({ ...prev, acceptPrivacy: undefined }));
+    setValues((prev) => {
+      const next = { ...prev, acceptPrivacy: checked };
+      setErrors(validate(next));
+      return next;
+    });
   };
 
   const validate = (form: JoinFormValues) => {
@@ -43,12 +52,15 @@ function JoinForm() {
     const phoneDigits = form.telefono.replace(/\D/g, "");
 
     if (!form.nombre.trim()) nextErrors.nombre = "El nombre es obligatorio.";
-    if (!form.apellidos.trim())
+    if (!form.apellidos.trim()) {
       nextErrors.apellidos = "Los apellidos son obligatorios.";
-    if (phoneDigits.length < 7)
+    }
+    if (phoneDigits.length < 7) {
       nextErrors.telefono = "Introduce un teléfono válido.";
-    if (!emailPattern.test(form.email))
-      nextErrors.email = "Introduce un email válido.";
+    }
+    if (!emailPattern.test(form.email)) {
+      nextErrors.email = "Introduce un email válido (ej. ejemplo@dominio.com).";
+    }
     if (!form.dni.trim()) nextErrors.dni = "El DNI es obligatorio.";
     if (!form.nacimiento) nextErrors.nacimiento = "La fecha es obligatoria.";
     if (!form.importe) nextErrors.importe = "Selecciona un importe.";
@@ -63,12 +75,14 @@ function JoinForm() {
     return nextErrors;
   };
 
+  const submitDisabled = Object.values(validate(values)).some(Boolean);
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const validationErrors = validate(values);
-    setErrors(validationErrors);
-    const hasErrors = Object.values(validationErrors).some(Boolean);
-    if (hasErrors) return;
+    const liveSnapshot = validate(values);
+    setErrors(liveSnapshot);
+    const liveHasErrors = Object.values(liveSnapshot).some(Boolean);
+    if (liveHasErrors) return;
 
     // Aquí podrías llamar a un puerto/adaptador para enviar los datos.
     console.log("Solicitud de alta", values);
@@ -81,6 +95,7 @@ function JoinForm() {
       onFileChange={handleFileChange}
       onCheckboxChange={handleCheckboxChange}
       errors={errors}
+      submitDisabled={submitDisabled}
       onSubmit={handleSubmit}
     />
   );
