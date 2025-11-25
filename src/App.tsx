@@ -6,6 +6,7 @@ import JoinSection from "./components/JoinSection";
 import NavBar from "./components/NavBar";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import LegalNotice from "./components/LegalNotice";
+import Footer from "./components/Footer";
 import { createJsonClubAdapter } from "./adapters/jsonClubAdapter";
 import type { Club } from "./domain/club";
 
@@ -35,9 +36,9 @@ function App() {
   }, [clubPort]);
 
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
       <NavBar />
-      <main className="min-vh-100 d-flex align-items-start py-4">
+      <main className="flex-grow-1 d-flex align-items-start py-4">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-7 col-md-9">
@@ -55,7 +56,8 @@ function App() {
           </div>
         </div>
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }
 
