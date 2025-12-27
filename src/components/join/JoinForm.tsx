@@ -1,10 +1,10 @@
 import { useState, type FormEvent } from "react";
-import type { JoinFormHandlers, JoinFormValues } from "./join-form.types";
-import MembershipForm from "./MembershipForm";
-import PlayerInfoForm from "./PlayerInfoForm";
-import PrivacyForm from "./PrivacyForm";
-import SepaPaymentForm from "./SepaPaymentForm";
-import SubmitForm from "./SubmitForm";
+import type { JoinFormHandlers, JoinFormValues } from "./JoinForm.types";
+import MembershipForm from "./membership/MembershipForm";
+import PlayerInfoForm from "./player-info/PlayerInfoForm";
+import PrivacyForm from "./privacy/PrivacyForm";
+import SepaPaymentForm from "./sepa/SepaPaymentForm";
+import SubmitForm from "./submit/SubmitForm";
 
 const initialValues: JoinFormValues = {
   nombre: "",

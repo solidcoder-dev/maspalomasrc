@@ -1,4 +1,4 @@
-import JoinForm from "./JoinForm";
+import JoinForm from "./join/JoinForm";
 
 function JoinSection() {
   return (

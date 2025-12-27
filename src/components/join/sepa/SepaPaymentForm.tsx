@@ -1,4 +1,4 @@
-import type { JoinFormHandlers, JoinFormValues } from "./join-form.types";
+import type { JoinFormHandlers, JoinFormValues } from "../JoinForm.types";
 import SepaPaymentFormView from "./SepaPaymentFormView";
 
 type SepaPaymentFormProps = Pick<

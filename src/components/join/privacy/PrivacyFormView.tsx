@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { JoinFormValues } from "./join-form.types";
+import type { JoinFormValues } from "../JoinForm.types";
 
 type PrivacyFormViewProps = {
   values: JoinFormValues;
