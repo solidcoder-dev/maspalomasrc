@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from "react";
-import JoinFormView, { type JoinFormValues } from "./JoinFormView";
+import { useState, type FormEvent, type ReactNode } from "react";
+import type { JoinFormHandlers, JoinFormValues } from "./join-form.types";
 
 const initialValues: JoinFormValues = {
   nombre: "",
@@ -24,7 +24,11 @@ const initialValues: JoinFormValues = {
   acceptPrivacy: false
 };
 
-function JoinForm() {
+type JoinFormProps = {
+  children: (handlers: JoinFormHandlers) => ReactNode;
+};
+
+function JoinForm({ children }: JoinFormProps) {
   const [values, setValues] = useState<JoinFormValues>(initialValues);
   const [errors, setErrors] = useState<
     Partial<Record<keyof JoinFormValues, string>>
@@ -158,17 +162,15 @@ function JoinForm() {
     console.log("Solicitud de alta", values);
   };
 
-  return (
-    <JoinFormView
-      values={values}
-      onChange={handleChange}
-      onFileChange={handleFileChange}
-      onToggleChange={handleToggleChange}
-      errors={errors}
-      submitDisabled={submitDisabled}
-      onSubmit={handleSubmit}
-    />
-  );
+  return children({
+    values,
+    onChange: handleChange,
+    onFileChange: handleFileChange,
+    onToggleChange: handleToggleChange,
+    errors,
+    submitDisabled,
+    onSubmit: handleSubmit
+  });
 }
 
 export default JoinForm;

@@ -1,4 +1,5 @@
 import JoinForm from "./JoinForm";
+import JoinFormView from "./JoinFormView";
 
 function JoinSection() {
   return (
@@ -9,7 +10,9 @@ function JoinSection() {
           Completa el formulario para iniciar el alta. Nos pondremos en contacto
           contigo para confirmar los próximos pasos.
         </p>
-        <JoinForm />
+        <JoinForm>
+          {(handlers) => <JoinFormView {...handlers} />}
+        </JoinForm>
       </div>
     </section>
   );

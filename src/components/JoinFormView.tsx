@@ -1,38 +1,7 @@
-import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
+import type { JoinFormHandlers } from "./join-form.types";
 
-export type JoinFormValues = {
-  nombre: string;
-  apellidos: string;
-  telefono: string;
-  email: string;
-  dni: string;
-  nacimiento: string;
-  direccion: string;
-  codigoPostal: string;
-  localizacion: string;
-  importe: string;
-  titularMismoQueJugador: boolean;
-  titularNombre: string;
-  titularEmail: string;
-  titularDireccion: string;
-  titularCodigoPostal: string;
-  titularLocalizacion: string;
-  iban: string;
-  acceptSepaMandate: boolean;
-  justificante: File | null;
-  acceptPrivacy: boolean;
-};
-
-type JoinFormViewProps = {
-  values: JoinFormValues;
-  onChange: (field: keyof JoinFormValues, value: string) => void;
-  onFileChange: (file: File | null) => void;
-  onToggleChange: (field: keyof JoinFormValues, checked: boolean) => void;
-  errors: Partial<Record<keyof JoinFormValues, string>>;
-  submitDisabled: boolean;
-  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
-};
+type JoinFormViewProps = JoinFormHandlers;
 
 function JoinFormView({
   values,
