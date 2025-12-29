@@ -1,18 +1,25 @@
 import JoinRequestForm from "./join/JoinRequestForm";
 import type { Club } from "../domain/club";
 import type { SepaMandatePort } from "../ports/sepa-mandate-port";
-import { createSepaMandate } from "../application/join/createSepaMandate";
+import type { JoinRequestStoragePort } from "../ports/join-request-storage-port";
+import { submitJoinRequest } from "../application/join/submitJoinRequest";
 import type { JoinRequestValues } from "../application/join/joinRequestPresenter";
 
 type JoinSectionProps = {
   club: Club | null;
   sepaMandatePort: SepaMandatePort;
+  storagePort: JoinRequestStoragePort;
 };
 
-function JoinSection({ club, sepaMandatePort }: JoinSectionProps) {
+function JoinSection({ club, sepaMandatePort, storagePort }: JoinSectionProps) {
   const handleJoinRequest = (values: JoinRequestValues) => {
     if (!club) return;
-    const mandate = createSepaMandate({ values, club, sepaMandatePort });
+    const mandate = submitJoinRequest({
+      values,
+      club,
+      sepaMandatePort,
+      storagePort
+    });
     console.log("Mandato SEPA generado", mandate);
   };
 
