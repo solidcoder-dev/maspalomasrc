@@ -7,9 +7,9 @@ import NavBar from "./ui/NavBar";
 import PrivacyPolicy from "./ui/PrivacyPolicy";
 import LegalNotice from "./ui/LegalNotice";
 import Footer from "./ui/Footer";
-import { createJsonClubAdapter } from "./adapters/jsonClubAdapter";
-import { createSepaMandateAdapter } from "./adapters/sepaMandateAdapter";
-import { createLocalStorageJoinRequestAdapter } from "./adapters/localStorageJoinRequestAdapter";
+import { createJsonClubAdapter } from "./infrastructure/jsonClubAdapter";
+import { createSepaMandateAdapter } from "./infrastructure/sepaMandateAdapter";
+import { createLocalStorageJoinRequestAdapter } from "./infrastructure/localStorageJoinRequestAdapter";
 import type { Club } from "./domain/club";
 
 function App() {
