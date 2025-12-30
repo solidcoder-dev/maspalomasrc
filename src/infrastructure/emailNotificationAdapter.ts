@@ -1,3 +1,4 @@
+import emailjs from "@emailjs/browser";
 import type {
   NotificationPayload,
   NotificationPort
@@ -19,20 +20,16 @@ export function createEmailNotificationAdapter(
   }: NotificationPayload) => {
     if (!config.serviceId || !config.templateId || !config.publicKey) return;
 
-    await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        service_id: config.serviceId,
-        template_id: config.templateId,
-        user_id: config.publicKey,
-        template_params: {
-          title,
-          message,
-          to_email: recipientEmail
-        }
-      })
-    });
+    await emailjs.send(
+      config.serviceId,
+      config.templateId,
+      {
+        title,
+        message,
+        to_email: recipientEmail
+      },
+      { publicKey: config.publicKey }
+    );
   };
 
   return { notify };
