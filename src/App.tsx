@@ -15,6 +15,7 @@ import {
     createFakeEmailNotificationAdapter
 } from "./infrastructure/emailNotificationAdapter";
 import { createSepaNoticeTemplateAdapter } from "./infrastructure/sepaNoticeTemplateAdapter";
+import { createSepaMandatePdfAdapter } from "./infrastructure/sepaMandatePdfAdapter";
 import type { Club } from "./domain/club";
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
     () => createSepaNoticeTemplateAdapter(),
     []
   );
+  const mandatePdfPort = useMemo(() => createSepaMandatePdfAdapter(), []);
   const [club, setClub] = useState<Club | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -87,6 +89,7 @@ function App() {
                       clientContextPort={clientContextPort}
                       notificationPort={notificationPort}
                       templateRendererPort={templateRendererPort}
+                      mandatePdfPort={mandatePdfPort}
                     />
                   }
                 />
