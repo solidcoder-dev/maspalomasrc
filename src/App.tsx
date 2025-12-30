@@ -15,6 +15,7 @@ import { createSepaMandatePdfAdapter } from "./infrastructure/sepaMandatePdfAdap
 import { createEmailNotificationAdapter } from "./infrastructure/emailNotificationAdapter";
 import type { Club } from "./domain/club";
 import { createSubmitContactUseCase } from "./application/contact/submitContactUseCase";
+import { createSubmitJoinRequestUseCase } from "./application/join/submitJoinRequestUseCase";
 
 function App() {
   const tenant = (import.meta.env.VITE_TENANT || "default").toLowerCase();
@@ -42,6 +43,16 @@ function App() {
     [contactNotificationPort]
   );
   const mandatePdfPort = useMemo(() => createSepaMandatePdfAdapter(), []);
+  const submitJoinRequestUseCase = useMemo(
+    () =>
+      createSubmitJoinRequestUseCase({
+        sepaMandatePort,
+        storagePort: joinRequestStoragePort,
+        clientContextPort,
+        mandatePdfPort
+      }),
+    [sepaMandatePort, joinRequestStoragePort, clientContextPort, mandatePdfPort]
+  );
   const [club, setClub] = useState<Club | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -90,10 +101,7 @@ function App() {
                   element={
                     <JoinSection
                       club={club}
-                      sepaMandatePort={sepaMandatePort}
-                      storagePort={joinRequestStoragePort}
-                      clientContextPort={clientContextPort}
-                      mandatePdfPort={mandatePdfPort}
+                      submitJoinRequestUseCase={submitJoinRequestUseCase}
                     />
                   }
                 />

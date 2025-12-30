@@ -15,14 +15,11 @@ type SubmitJoinRequestParams = {
   mandatePdfPort: MandatePdfPort;
 };
 
-export const submitJoinRequestUseCase = async ({
-  values,
-  club,
-  sepaMandatePort,
-  storagePort,
-  clientContextPort,
-  mandatePdfPort
-}: SubmitJoinRequestParams) => {
+export const createSubmitJoinRequestUseCase =
+  (ports: Omit<SubmitJoinRequestParams, "values" | "club">) =>
+  async ({ values, club }: Pick<SubmitJoinRequestParams, "values" | "club">) => {
+    const { sepaMandatePort, storagePort, clientContextPort, mandatePdfPort } =
+      ports;
   const mandate = await createSepaMandateUseCase({
     values,
     club,
