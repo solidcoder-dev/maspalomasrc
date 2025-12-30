@@ -14,6 +14,7 @@ import { createBrowserClientContextAdapter } from "./infrastructure/browserClien
 import { createSepaMandatePdfAdapter } from "./infrastructure/sepaMandatePdfAdapter";
 import { createEmailNotificationAdapter } from "./infrastructure/emailNotificationAdapter";
 import type { Club } from "./domain/club";
+import { submitContactUseCase } from "./application/contact/submitContactUseCase";
 
 function App() {
   const tenant = (import.meta.env.VITE_TENANT || "default").toLowerCase();
@@ -76,7 +77,9 @@ function App() {
                   element={
                     <ContactSection
                       club={club}
-                      notificationPort={contactNotificationPort}
+                      onSubmitContact={(payload) =>
+                        submitContactUseCase(payload, contactNotificationPort)
+                      }
                     />
                   }
                 />

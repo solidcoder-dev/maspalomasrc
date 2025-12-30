@@ -1,18 +1,22 @@
 import ContactForm from "./contact/ContactForm";
 import ContactStatusView from "./contact/ContactStatusView";
-import { submitContactUseCase } from "../application/contact/submitContactUseCase";
+import ContactTrainingView from "./contact/ContactTrainingView";
 import type { Club } from "../domain/club";
-import type { NotificationPort } from "../ports/notification-port";
 import { useContactPresenter } from "./contact/useContactPresenter";
 
 type ContactSectionProps = {
   club: Club | null;
-  notificationPort: NotificationPort;
+  onSubmitContact: (payload: {
+    name: string;
+    email: string;
+    message: string;
+    recipientEmail: string;
+  }) => Promise<void> | void;
 };
 
-function ContactSection({ club, notificationPort }: ContactSectionProps) {
+function ContactSection({ club, onSubmitContact }: ContactSectionProps) {
   const presenter = useContactPresenter({
-    onSubmitContact: (payload) => submitContactUseCase(payload, notificationPort),
+    onSubmitContact,
     recipientEmail: club?.email || ""
   });
 
@@ -24,25 +28,7 @@ function ContactSection({ club, notificationPort }: ContactSectionProps) {
           Escríbenos para coordinar entrenamientos, colaboraciones o resolver
           dudas sobre el club.
         </p>
-        {club?.training && (
-          <div className="mb-3 p-3 bg-light border rounded">
-            <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
-              <h2 className="h6 mb-0">Entrenamientos</h2>
-              <span className="badge bg-primary">
-                {club.training.schedule}
-              </span>
-            </div>
-            <div className="text-secondary mb-2">{club.training.location}</div>
-            <a
-              className="btn btn-outline-primary btn-sm"
-              href={club.training.mapsUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Ver mapa
-            </a>
-          </div>
-        )}
+        <ContactTrainingView training={club?.training} />
         <ContactStatusView status={presenter.status} />
         <ContactForm {...presenter} />
       </div>
