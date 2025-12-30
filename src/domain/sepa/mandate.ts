@@ -9,6 +9,7 @@ export type SepaMandateInput = {
   amount: number;
   currency: string;
   consent: boolean;
+  signatureDataUrl: string;
   mandateType: "CORE";
   frequency: "MONTHLY";
   sequenceType: "RCUR";

@@ -23,6 +23,7 @@ const initialValues: JoinRequestValues = {
   titularLocalizacion: "",
   iban: "",
   acceptSepaMandate: false,
+  signatureDataUrl: "",
   justificante: null,
   acceptPrivacy: false
 };
@@ -68,6 +69,16 @@ export const useJoinRequestPresenter = ({
     });
   };
 
+  const handleSignatureChange = (dataUrl: string) => {
+    setTouched((prev) => ({ ...prev, signatureDataUrl: true }));
+    setValues((prev) => ({ ...prev, signatureDataUrl: dataUrl }));
+  };
+
+  const handleSignatureClear = () => {
+    setTouched((prev) => ({ ...prev, signatureDataUrl: true }));
+    setValues((prev) => ({ ...prev, signatureDataUrl: "" }));
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitAttempted(true);
@@ -94,6 +105,8 @@ export const useJoinRequestPresenter = ({
     onFileChange: handleFileChange,
     onToggleChange: handleToggleChange,
     onBlurField: handleBlurField,
+    onSignatureChange: handleSignatureChange,
+    onSignatureClear: handleSignatureClear,
     errors,
     submitDisabled,
     isSubmitting,

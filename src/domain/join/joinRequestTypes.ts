@@ -17,6 +17,7 @@ export type JoinFormValues = {
   titularLocalizacion: string;
   iban: string;
   acceptSepaMandate: boolean;
+  signatureDataUrl: string;
   justificante: File | null;
   acceptPrivacy: boolean;
 };

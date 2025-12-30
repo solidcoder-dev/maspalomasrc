@@ -36,6 +36,7 @@ export const createSepaMandateUseCase = async ({
     amount: Number.parseFloat(values.importe || "0"),
     currency: "EUR",
     consent: values.acceptSepaMandate,
+    signatureDataUrl: values.signatureDataUrl,
     mandateType: "CORE",
     frequency: "MONTHLY",
     sequenceType: "RCUR",

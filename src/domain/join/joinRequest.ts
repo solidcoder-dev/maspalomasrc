@@ -68,6 +68,9 @@ export const validateJoinRequest = (form: JoinFormValues): JoinFormErrors => {
   if (!form.acceptSepaMandate) {
     nextErrors.acceptSepaMandate = "Debes aceptar el mandato SEPA.";
   }
+  if (!form.signatureDataUrl) {
+    nextErrors.signatureDataUrl = "La firma es obligatoria.";
+  }
   if (!form.acceptPrivacy) {
     nextErrors.acceptPrivacy =
       "Debes aceptar la política de privacidad y el aviso legal.";

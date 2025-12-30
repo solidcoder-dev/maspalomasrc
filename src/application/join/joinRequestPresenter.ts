@@ -13,6 +13,8 @@ export type JoinRequestHandlers = {
   onFileChange: (file: File | null) => void;
   onToggleChange: (field: keyof JoinRequestValues, checked: boolean) => void;
   onBlurField: (field: keyof JoinRequestValues) => void;
+  onSignatureChange: (dataUrl: string) => void;
+  onSignatureClear: () => void;
   errors: JoinRequestErrors;
   submitDisabled: boolean;
   isSubmitting: boolean;
