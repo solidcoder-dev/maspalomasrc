@@ -5,5 +5,10 @@
   "description": "Somos el punto de encuentro en la región norte. Entrena, compite y conecta con la comunidad.",
   "address": "Calle Norte 45, 48000 Bilbao",
   "sepaCreditorId": "ES12ZZZ00000000001",
-  "email": "contacto@clubnorte.es"
+  "email": "contacto@clubnorte.es",
+  "training": {
+    "schedule": "Lunes y miercoles de 19:00 a 20:30",
+    "location": "Campo de cesped. Instalaciones deportivas del Campus de Tafira.",
+    "mapsUrl": "https://maps.app.goo.gl/wrdZTEqxkAhqiMfb8"
+  }
 }

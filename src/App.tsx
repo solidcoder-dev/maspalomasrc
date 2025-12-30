@@ -12,6 +12,7 @@ import { createSepaMandateAdapter } from "./infrastructure/sepaMandateAdapter";
 import { createLocalStorageJoinRequestAdapter } from "./infrastructure/localStorageJoinRequestAdapter";
 import { createBrowserClientContextAdapter } from "./infrastructure/browserClientContextAdapter";
 import { createSepaMandatePdfAdapter } from "./infrastructure/sepaMandatePdfAdapter";
+import { createEmailNotificationAdapter } from "./infrastructure/emailNotificationAdapter";
 import type { Club } from "./domain/club";
 
 function App() {
@@ -24,6 +25,15 @@ function App() {
   );
   const clientContextPort = useMemo(
     () => createBrowserClientContextAdapter(),
+    []
+  );
+  const contactNotificationPort = useMemo(
+    () =>
+      createEmailNotificationAdapter({
+        serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
+        templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "",
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ""
+      }),
     []
   );
   const mandatePdfPort = useMemo(() => createSepaMandatePdfAdapter(), []);
@@ -61,7 +71,15 @@ function App() {
                   path="/"
                   element={<ClubWelcome tenant={tenant} club={club} error={error} />}
                 />
-                <Route path="/contacto" element={<ContactSection />} />
+                <Route
+                  path="/contacto"
+                  element={
+                    <ContactSection
+                      club={club}
+                      notificationPort={contactNotificationPort}
+                    />
+                  }
+                />
                 <Route
                   path="/unete"
                   element={

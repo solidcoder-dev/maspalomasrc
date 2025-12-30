@@ -5,5 +5,10 @@
   "description": "Programa inicial para tu club. Añade secciones, actividades y novedades manteniendo esta base sencilla.",
   "address": "Avenida Central 123, 28000 Madrid",
   "sepaCreditorId": "ES12ZZZ00000000000",
-  "email": "info@clubcentral.es"
+  "email": "info@clubcentral.es",
+  "training": {
+    "schedule": "Lunes y miercoles de 19:00 a 20:30",
+    "location": "Campo de cesped. Instalaciones deportivas del Campus de Tafira.",
+    "mapsUrl": "https://maps.app.goo.gl/wrdZTEqxkAhqiMfb8"
+  }
 }

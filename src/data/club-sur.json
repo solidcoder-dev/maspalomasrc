@@ -5,5 +5,10 @@
   "description": "El club que une el espíritu del sur. Eventos, torneos y actividades sociales con calor local.",
   "address": "Avenida del Sol 8, 29000 Malaga",
   "sepaCreditorId": "ES12ZZZ00000000002",
-  "email": "info@clubsur.es"
+  "email": "info@clubsur.es",
+  "training": {
+    "schedule": "Lunes y miercoles de 19:00 a 20:30",
+    "location": "Campo de cesped. Instalaciones deportivas del Campus de Tafira.",
+    "mapsUrl": "https://maps.app.goo.gl/wrdZTEqxkAhqiMfb8"
+  }
 }

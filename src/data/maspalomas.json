@@ -5,5 +5,10 @@
   "description": "Entrenamos junto al mar y llevamos el rugby a todos los rincones de Maspalomas con actividades para todas las edades.",
   "address": "Avenida Maritima 20, 35100 Maspalomas",
   "sepaCreditorId": "ES12ZZZ00000000003",
-  "email": "auladerugbygc@gmail.com"
+  "email": "auladerugbygc@gmail.com",
+  "training": {
+    "schedule": "Lunes y miercoles de 19:00 a 20:30",
+    "location": "Campo de cesped. Instalaciones deportivas del Campus de Tafira.",
+    "mapsUrl": "https://maps.app.goo.gl/wrdZTEqxkAhqiMfb8"
+  }
 }
