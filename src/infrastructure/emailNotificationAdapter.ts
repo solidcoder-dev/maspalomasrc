@@ -34,3 +34,18 @@ export function createEmailNotificationAdapter(
 
   return { notify };
 }
+
+export function createFakeEmailNotificationAdapter(
+    config: EmailNotificationConfig
+): NotificationPort {
+    const notify = async ({
+                              title,
+                              message,
+                              recipientEmail
+                          }: NotificationPayload) => {
+        if (!config.serviceId || !config.templateId || !config.publicKey) return;
+        console.log("Sending email to: ", recipientEmail, " with message: ", message)
+    };
+
+    return { notify };
+}

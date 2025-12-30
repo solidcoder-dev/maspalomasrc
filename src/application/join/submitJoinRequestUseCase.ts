@@ -57,11 +57,11 @@ export const submitJoinRequestUseCase = async ({
     clubName: club.name
   });
 
-  // await notificationPort.notify({
-  //   title: "Aviso de cargo SEPA",
-  //   message,
-  //   recipientEmail: values.titularEmail
-  // });
+  await notificationPort.notify({
+    title: "Aviso de cargo SEPA",
+    message,
+    recipientEmail: values.titularEmail
+  });
 
   return mandate;
 };
