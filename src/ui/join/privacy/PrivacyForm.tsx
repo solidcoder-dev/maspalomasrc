@@ -3,15 +3,21 @@ import PrivacyFormView from "./PrivacyFormView";
 
 type PrivacyFormProps = Pick<
   JoinRequestHandlers,
-  "values" | "errors" | "onToggleChange"
+  "values" | "errors" | "onToggleChange" | "shouldShowError"
 >;
 
-function PrivacyForm({ values, errors, onToggleChange }: PrivacyFormProps) {
+function PrivacyForm({
+  values,
+  errors,
+  onToggleChange,
+  shouldShowError
+}: PrivacyFormProps) {
   return (
     <PrivacyFormView
       values={values}
       errors={errors}
       onToggleChange={onToggleChange}
+      shouldShowError={shouldShowError}
     />
   );
 }

@@ -12,8 +12,10 @@ export type JoinRequestHandlers = {
   onChange: (field: keyof JoinRequestValues, value: string) => void;
   onFileChange: (file: File | null) => void;
   onToggleChange: (field: keyof JoinRequestValues, checked: boolean) => void;
+  onBlurField: (field: keyof JoinRequestValues) => void;
   errors: JoinRequestErrors;
   submitDisabled: boolean;
   isSubmitting: boolean;
+  shouldShowError: (field: keyof JoinRequestValues) => boolean;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 };

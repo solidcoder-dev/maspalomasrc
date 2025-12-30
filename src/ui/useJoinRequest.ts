@@ -36,6 +36,10 @@ export const useJoinRequestPresenter = ({
 }: UseJoinFormConfig) => {
   const [values, setValues] = useState<JoinRequestValues>(initialValues);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [touched, setTouched] = useState<
+    Partial<Record<keyof JoinRequestValues, boolean>>
+  >({});
+  const [submitAttempted, setSubmitAttempted] = useState(false);
 
   const errors = useMemo(() => validateJoinRequest(values), [values]);
   const submitDisabled = isSubmitting || Object.values(errors).some(Boolean);
@@ -66,6 +70,7 @@ export const useJoinRequestPresenter = ({
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setSubmitAttempted(true);
     if (Object.values(errors).some(Boolean)) return;
     setIsSubmitting(true);
     try {
@@ -75,14 +80,24 @@ export const useJoinRequestPresenter = ({
     }
   };
 
+  const handleBlurField = (field: keyof JoinRequestValues) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+  };
+
+  const shouldShowError = (field: keyof JoinRequestValues) => {
+    return Boolean(touched[field] || submitAttempted);
+  };
+
   const handlers: JoinRequestHandlers = {
     values,
     onChange: handleChange,
     onFileChange: handleFileChange,
     onToggleChange: handleToggleChange,
+    onBlurField: handleBlurField,
     errors,
     submitDisabled,
     isSubmitting,
+    shouldShowError,
     onSubmit: handleSubmit
   };
 
