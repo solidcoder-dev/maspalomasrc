@@ -1,10 +1,10 @@
+import { useState } from "react";
 import JoinRequestForm from "./join/JoinRequestForm";
+import JoinSubmissionModalView from "./join/JoinSubmissionModalView";
 import type { Club } from "../domain/club";
 import type { SepaMandatePort } from "../ports/sepa-mandate-port";
 import type { JoinRequestStoragePort } from "../ports/join-request-storage-port";
 import type { ClientContextPort } from "../ports/client-context-port";
-import type { NotificationPort } from "../ports/notification-port";
-import type { TemplateRendererPort } from "../ports/template-renderer-port";
 import type { MandatePdfPort } from "../ports/mandate-pdf-port";
 import { submitJoinRequestUseCase } from "../application/join/submitJoinRequestUseCase";
 import type { JoinRequestValues } from "../application/join/joinRequestPresenter";
@@ -14,8 +14,6 @@ type JoinSectionProps = {
   sepaMandatePort: SepaMandatePort;
   storagePort: JoinRequestStoragePort;
   clientContextPort: ClientContextPort;
-  notificationPort: NotificationPort;
-  templateRendererPort: TemplateRendererPort;
   mandatePdfPort: MandatePdfPort;
 };
 
@@ -24,23 +22,25 @@ function JoinSection({
   sepaMandatePort,
   storagePort,
   clientContextPort,
-  notificationPort,
-  templateRendererPort,
   mandatePdfPort
 }: JoinSectionProps) {
+  const [pdfDataUrl, setPdfDataUrl] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [playerName, setPlayerName] = useState("");
+
   const handleJoinRequest = async (values: JoinRequestValues) => {
     if (!club) return;
-    const mandate = await submitJoinRequestUseCase({
+    const result = await submitJoinRequestUseCase({
       values,
       club,
       sepaMandatePort,
       storagePort,
       clientContextPort,
-      notificationPort,
-      templateRendererPort,
       mandatePdfPort
     });
-    console.log("Mandato SEPA generado", mandate);
+    setPdfDataUrl(result.pdfDataUrl);
+    setPlayerName(result.mandate.debtorName);
+    setShowModal(true);
   };
 
   return (
@@ -51,6 +51,14 @@ function JoinSection({
           Completa el formulario para iniciar el alta. Nos pondremos en contacto
           contigo para confirmar los próximos pasos.
         </p>
+        {showModal && pdfDataUrl && club?.email && (
+          <JoinSubmissionModalView
+            playerName={playerName}
+            clubEmail={club.email}
+            pdfDataUrl={pdfDataUrl}
+            onClose={() => setShowModal(false)}
+          />
+        )}
         <JoinRequestForm onSubmitRequest={handleJoinRequest} />
       </div>
     </section>

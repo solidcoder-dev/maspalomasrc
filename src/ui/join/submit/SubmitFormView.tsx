@@ -14,10 +14,10 @@ function SubmitFormView({ submitDisabled, isSubmitting }: SubmitFormViewProps) {
               role="status"
               aria-hidden="true"
             />
-            Enviando...
+            Generando...
           </>
         ) : (
-          "Enviar solicitud"
+          "Generar mandato SEPA"
         )}
       </button>
     </div>

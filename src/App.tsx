@@ -11,11 +11,6 @@ import { createJsonClubAdapter } from "./infrastructure/jsonClubAdapter";
 import { createSepaMandateAdapter } from "./infrastructure/sepaMandateAdapter";
 import { createLocalStorageJoinRequestAdapter } from "./infrastructure/localStorageJoinRequestAdapter";
 import { createBrowserClientContextAdapter } from "./infrastructure/browserClientContextAdapter";
-import {
-    createEmailNotificationAdapter,
-    createFakeEmailNotificationAdapter
-} from "./infrastructure/emailNotificationAdapter";
-import { createSepaNoticeTemplateAdapter } from "./infrastructure/sepaNoticeTemplateAdapter";
 import { createSepaMandatePdfAdapter } from "./infrastructure/sepaMandatePdfAdapter";
 import type { Club } from "./domain/club";
 
@@ -29,19 +24,6 @@ function App() {
   );
   const clientContextPort = useMemo(
     () => createBrowserClientContextAdapter(),
-    []
-  );
-  const notificationPort = useMemo(
-    () =>
-      createEmailNotificationAdapter({ // TODO use real email adapter
-        serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
-        templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "",
-        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ""
-      }),
-    []
-  );
-  const templateRendererPort = useMemo(
-    () => createSepaNoticeTemplateAdapter(),
     []
   );
   const mandatePdfPort = useMemo(() => createSepaMandatePdfAdapter(), []);
@@ -88,8 +70,6 @@ function App() {
                       sepaMandatePort={sepaMandatePort}
                       storagePort={joinRequestStoragePort}
                       clientContextPort={clientContextPort}
-                      notificationPort={notificationPort}
-                      templateRendererPort={templateRendererPort}
                       mandatePdfPort={mandatePdfPort}
                     />
                   }
