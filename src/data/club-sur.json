@@ -6,6 +6,7 @@
   "address": "Avenida del Sol 8, 29000 Malaga",
   "sepaCreditorId": "ES12ZZZ00000000002",
   "email": "info@clubsur.es",
+  "logoFile": "club-sur.png",
   "training": {
     "schedule": "Lunes y miercoles de 19:00 a 20:30",
     "location": "Campo de cesped. Instalaciones deportivas del Campus de Tafira.",

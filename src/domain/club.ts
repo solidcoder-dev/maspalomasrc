@@ -6,6 +6,7 @@ export type ClubDTO = {
   address: string;
   sepaCreditorId: string;
   email: string;
+  logoUrl?: string;
   training: {
     schedule: string;
     location: string;
@@ -22,6 +23,7 @@ export class Club {
     public readonly address: string,
     public readonly sepaCreditorId: string,
     public readonly email: string,
+    public readonly logoUrl: string | undefined,
     public readonly training: ClubDTO["training"]
   ) {}
 
@@ -34,6 +36,7 @@ export class Club {
       dto.address,
       dto.sepaCreditorId,
       dto.email,
+      dto.logoUrl,
       dto.training
     );
   }

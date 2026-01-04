@@ -1,12 +1,24 @@
 import { Link, NavLink } from "react-router-dom";
 import "bootstrap/js/dist/collapse";
 
-function NavBar() {
+type NavBarProps = {
+  clubName?: string;
+  logoUrl?: string;
+};
+
+function NavBar({ clubName = "Club", logoUrl }: NavBarProps) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
       <div className="container">
-        <Link className="navbar-brand fw-bold" to="/">
-          Club
+        <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
+          {logoUrl && (
+            <img
+              src={logoUrl}
+              alt={clubName}
+              height={50}
+              className="me-2 rounded-1"
+            />
+          )}
         </Link>
         <button
           className="navbar-toggler"

@@ -77,7 +77,7 @@ function App() {
 
   return (
     <div className="d-flex flex-column min-vh-100">
-      <NavBar />
+      <NavBar clubName={club?.name} logoUrl={club?.logoUrl} />
       <main className="flex-grow-1 d-flex align-items-start py-4">
         <div className="container">
           <div className="row justify-content-center">
