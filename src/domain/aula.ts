@@ -3,6 +3,10 @@ export type AulaDTO = {
   title: string;
   subtitle: string;
   description: string;
+  partnership: {
+    title: string;
+    description: string;
+  };
   trainings: {
     schedule: string;
     location: string;
@@ -20,6 +24,7 @@ export class AulaInfo {
     public readonly title: string,
     public readonly subtitle: string,
     public readonly description: string,
+    public readonly partnership: AulaDTO["partnership"],
     public readonly trainings: AulaDTO["trainings"],
     public readonly approach: AulaDTO["approach"]
   ) {}
@@ -30,6 +35,7 @@ export class AulaInfo {
       dto.title,
       dto.subtitle,
       dto.description,
+      dto.partnership,
       dto.trainings,
       dto.approach
     );

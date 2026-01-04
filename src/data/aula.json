@@ -3,6 +3,10 @@
   "title": "Aula de Rugby",
   "subtitle": "Un espacio de iniciación y formación",
   "description": "Programación formativa pensada para personas que quieren empezar desde cero y aprender a su ritmo.",
+  "partnership": {
+    "title": "Actividad en colaboración con la ULPGC",
+    "description": "El Aula de Rugby se desarrolla en partnership con la Universidad de Las Palmas de Gran Canaria, con el objetivo de acercar el rugby a la comunidad universitaria."
+  },
   "trainings": {
     "schedule": "Lunes y miércoles · 19:00 a 20:30",
     "location": "Campo de césped. Instalaciones deportivas del Campus de Tafira.",
