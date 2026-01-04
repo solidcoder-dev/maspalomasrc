@@ -31,6 +31,10 @@ function JoinSubmissionModalView({
                 Revisa la información del mandato y envía el documento al club
                 para completar el alta.
               </p>
+              <div className="alert alert-warning small mb-3" role="alert">
+                Si eres estudiante, adjunta también el justificante universitario
+                junto con el mandato SEPA.
+              </div>
               <p className="mb-2">
                 Email de envío: <strong>{clubEmail}</strong>
               </p>

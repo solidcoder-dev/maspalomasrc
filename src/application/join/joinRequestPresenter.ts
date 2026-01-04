@@ -10,7 +10,6 @@ export type JoinRequestErrors = DomainJoinFormErrors;
 export type JoinRequestHandlers = {
   values: JoinRequestValues;
   onChange: (field: keyof JoinRequestValues, value: string) => void;
-  onFileChange: (file: File | null) => void;
   onToggleChange: (field: keyof JoinRequestValues, checked: boolean) => void;
   onBlurField: (field: keyof JoinRequestValues) => void;
   onSignatureChange: (dataUrl: string) => void;

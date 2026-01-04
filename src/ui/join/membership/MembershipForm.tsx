@@ -3,14 +3,13 @@ import MembershipFormView from "./MembershipFormView";
 
 type MembershipFormProps = Pick<
   JoinRequestHandlers,
-  "values" | "errors" | "onChange" | "onFileChange" | "onBlurField" | "shouldShowError"
+  "values" | "errors" | "onChange" | "onBlurField" | "shouldShowError"
 >;
 
 function MembershipForm({
   values,
   errors,
   onChange,
-  onFileChange,
   onBlurField,
   shouldShowError
 }: MembershipFormProps) {
@@ -19,7 +18,6 @@ function MembershipForm({
       values={values}
       errors={errors}
       onChange={onChange}
-      onFileChange={onFileChange}
       onBlurField={onBlurField}
       shouldShowError={shouldShowError}
     />

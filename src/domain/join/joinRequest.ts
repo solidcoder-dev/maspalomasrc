@@ -33,9 +33,6 @@ export const validateJoinRequest = (form: JoinFormValues): JoinFormErrors => {
   if (!form.dni.trim()) nextErrors.dni = "El DNI es obligatorio.";
   if (!form.nacimiento) nextErrors.nacimiento = "La fecha es obligatoria.";
   if (!form.importe) nextErrors.importe = "Selecciona un importe.";
-  if (form.importe === "10" && !form.justificante) {
-    nextErrors.justificante = "Adjunta el justificante si eres estudiante.";
-  }
   if (form.titularMismoQueJugador) {
     if (!form.direccion.trim()) {
       nextErrors.direccion = "La dirección es obligatoria.";

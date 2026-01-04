@@ -24,7 +24,6 @@ const initialValues: JoinRequestValues = {
   iban: "",
   acceptSepaMandate: false,
   signatureDataUrl: "",
-  justificante: null,
   acceptPrivacy: false
 };
 
@@ -53,10 +52,6 @@ export const useJoinRequestPresenter = ({
       } as JoinRequestValues;
       return syncHolderFromPlayer(next);
     });
-  };
-
-  const handleFileChange = (file: File | null) => {
-    setValues((prev) => ({ ...prev, justificante: file }));
   };
 
   const handleToggleChange = (
@@ -102,7 +97,6 @@ export const useJoinRequestPresenter = ({
   const handlers: JoinRequestHandlers = {
     values,
     onChange: handleChange,
-    onFileChange: handleFileChange,
     onToggleChange: handleToggleChange,
     onBlurField: handleBlurField,
     onSignatureChange: handleSignatureChange,
