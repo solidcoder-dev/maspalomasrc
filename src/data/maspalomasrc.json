@@ -1,12 +1,12 @@
 {
-  "id": "maspalomas",
-  "name": "Club Maspalomas",
+  "id": "maspalomasrc",
+  "name": "Club Maspalomas RC",
   "tagline": "Rugby para todos, desde cero",
   "description": "Espacio de formación en rugby abierto a todos niveles, donde se fomenta el deporte, el aprendizaje desde cero y la mejora continua a través del juego, la diversión y una competición sana.",
   "address": "Avenida Maritima 20, 35100 Maspalomas",
   "sepaCreditorId": "ES12ZZZ00000000003",
   "email": "auladerugbygc@gmail.com",
-  "logoFile": "maspalomas.png",
+  "logoFile": "maspalomasrc.png",
   "training": {
     "schedule": "Lunes y miercoles de 19:00 a 20:30",
     "location": "Campo de cesped. Instalaciones deportivas del Campus de Tafira.",
