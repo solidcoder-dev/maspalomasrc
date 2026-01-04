@@ -1,6 +1,5 @@
 import ContactForm from "./contact/ContactForm";
 import ContactStatusView from "./contact/ContactStatusView";
-import ContactTrainingView from "./contact/ContactTrainingView";
 import type { Club } from "../domain/club";
 import { useContactPresenter } from "./contact/useContactPresenter";
 
@@ -27,7 +26,6 @@ function ContactSection({ club, submitContactUseCase }: ContactSectionProps) {
           Escríbenos para coordinar entrenamientos, colaboraciones o resolver
           dudas sobre el club.
         </p>
-        <ContactTrainingView training={club?.training} />
         <ContactStatusView status={presenter.status} />
         <ContactForm {...presenter} />
     </section>
