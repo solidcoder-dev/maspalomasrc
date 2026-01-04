@@ -1,0 +1,19 @@
+{
+  "id": "aula",
+  "title": "Aula de Rugby",
+  "subtitle": "Un espacio de iniciación y formación",
+  "description": "Programación formativa pensada para personas que quieren empezar desde cero y aprender a su ritmo.",
+  "trainings": {
+    "schedule": "Lunes y miércoles · 19:00 a 20:30",
+    "location": "Campo de césped. Instalaciones deportivas del Campus de Tafira.",
+    "mapsUrl": "https://maps.app.goo.gl/wrdZTEqxkAhqiMfb8"
+  },
+  "approach": {
+    "title": "Enfoque",
+    "points": [
+      "Aprendizaje progresivo con apoyo técnico.",
+      "Entrenamientos accesibles para todos los niveles.",
+      "Ambiente inclusivo y acompañamiento continuo."
+    ]
+  }
+}

@@ -45,6 +45,16 @@ function NavBar({ clubName = "Club", logoUrl }: NavBarProps) {
             </li>
             <li className="nav-item">
               <NavLink
+                to="/aula"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? "active fw-semibold text-white" : ""}`
+                }
+              >
+                Aula
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
                 to="/unete"
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "active fw-semibold text-white" : ""}`

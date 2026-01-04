@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ClubWelcome from "./ui/ClubWelcome";
+import AulaSection from "./ui/aula/AulaSection";
 import ContactSection from "./ui/ContactSection";
 import JoinSection from "./ui/JoinSection";
 import NavBar from "./ui/NavBar";
@@ -13,6 +14,7 @@ import { createLocalStorageJoinRequestAdapter } from "./infrastructure/localStor
 import { createBrowserClientContextAdapter } from "./infrastructure/browserClientContextAdapter";
 import { createSepaMandatePdfAdapter } from "./infrastructure/sepaMandatePdfAdapter";
 import { createEmailNotificationAdapter } from "./infrastructure/emailNotificationAdapter";
+import { createJsonAulaAdapter } from "./infrastructure/jsonAulaAdapter";
 import type { Club } from "./domain/club";
 import { createSubmitContactUseCase } from "./application/contact/submitContactUseCase";
 import { createSubmitJoinRequestUseCase } from "./application/join/submitJoinRequestUseCase";
@@ -21,6 +23,7 @@ function App() {
   const tenant = (import.meta.env.VITE_TENANT || "default").toLowerCase();
   const clubPort = useMemo(() => createJsonClubAdapter(tenant), [tenant]);
   const sepaMandatePort = useMemo(() => createSepaMandateAdapter(), []);
+  const aulaPort = useMemo(() => createJsonAulaAdapter(), []);
   const joinRequestStoragePort = useMemo(
     () => createLocalStorageJoinRequestAdapter(),
     []
@@ -86,6 +89,10 @@ function App() {
                 <Route
                   path="/"
                   element={<ClubWelcome tenant={tenant} club={club} error={error} />}
+                />
+                <Route
+                  path="/aula"
+                  element={<AulaSection aulaPort={aulaPort} />}
                 />
                 <Route
                   path="/contacto"
