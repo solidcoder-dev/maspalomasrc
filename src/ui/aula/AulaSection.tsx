@@ -1,7 +1,10 @@
 import type { AulaContentPort } from "../../ports/aula-content-port";
 import AulaApproachView from "./AulaApproachView";
+import AulaAudienceView from "./AulaAudienceView";
+import AulaCtaView from "./AulaCtaView";
 import AulaIntroView from "./AulaIntroView";
 import AulaPartnershipView from "./AulaPartnershipView";
+import AulaSocialsView from "./AulaSocialsView";
 import AulaTrainingView from "./AulaTrainingView";
 import { useAulaPresenter } from "./useAulaPresenter";
 
@@ -10,7 +13,17 @@ type AulaSectionProps = {
 };
 
 function AulaSection({ aulaContentPort }: AulaSectionProps) {
-  const { intro, training, approach, partnership, error, isLoading } =
+  const {
+    intro,
+    audience,
+    training,
+    approach,
+    partnership,
+    cta,
+    socials,
+    error,
+    isLoading
+  } =
     useAulaPresenter({ aulaContentPort });
 
   return (
@@ -29,18 +42,25 @@ function AulaSection({ aulaContentPort }: AulaSectionProps) {
       {isLoading && !error && (
         <p className="text-body-secondary mb-3">Cargando información...</p>
       )}
-      {intro && training && approach && partnership && !error && (
+      {intro && audience && training && approach && partnership && cta && socials && !error && (
         <>
           <AulaIntroView intro={intro} />
           <AulaPartnershipView partnership={partnership} />
           <div className="row g-4">
             <div className="col-lg-6">
-              <AulaTrainingView trainings={training} />
+              <AulaAudienceView audience={audience} />
             </div>
             <div className="col-lg-6">
               <AulaApproachView approach={approach} />
             </div>
           </div>
+          <div className="mt-4">
+            <AulaTrainingView trainings={training} />
+          </div>
+          <div className="mt-4">
+            <AulaSocialsView socials={socials} />
+          </div>
+          <AulaCtaView cta={cta} />
         </>
       )}
     </section>

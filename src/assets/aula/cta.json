@@ -1,0 +1,12 @@
+{
+  "title": "¿Quieres participar?",
+  "description": "Si quieres unirte al club o resolver dudas sobre el Aula de Rugby, contacta con nosotros o envía tu solicitud.",
+  "primary": {
+    "label": "Únete al club",
+    "href": "/unete"
+  },
+  "secondary": {
+    "label": "Contactar",
+    "href": "/contacto"
+  }
+}

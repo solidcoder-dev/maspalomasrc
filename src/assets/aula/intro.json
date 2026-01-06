@@ -1,5 +1,10 @@
 {
-  "title": "Aula de Rugby",
-  "subtitle": "Un espacio de iniciación y formación",
-  "description": "Programación formativa pensada para personas que quieren empezar desde cero y aprender a su ritmo."
+  "title": "Aula de Rugby en la ULPGC",
+  "subtitle": "Actividad organizada por el Club de Rugby Maspalomas",
+  "description": "Programa abierto a universitarios y externos para aprender rugby desde cero con ejercicios competitivos y divertidos, en un ambiente sano y seguro.",
+  "highlights": [
+    "Sede ULPGC · Campus de Tafira",
+    "Organizado por el Club de Rugby Maspalomas",
+    "Abierto a universitarios y externos"
+  ]
 }

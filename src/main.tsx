@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "@tenant-theme";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./index.css";
 
 const container = document.getElementById("root");

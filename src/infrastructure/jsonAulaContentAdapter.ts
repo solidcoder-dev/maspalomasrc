@@ -1,7 +1,10 @@
 import type {
   AulaApproachDTO,
+  AulaAudienceDTO,
+  AulaCtaDTO,
   AulaIntroDTO,
   AulaPartnershipDTO,
+  AulaSocialsDTO,
   AulaTrainingDTO
 } from "../domain/aula";
 import type { AulaContentPort } from "../ports/aula-content-port";
@@ -23,6 +26,10 @@ export function createJsonAulaContentAdapter(): AulaContentPort {
     return loadJson<AulaIntroDTO>("intro");
   }
 
+  async function getAudience() {
+    return loadJson<AulaAudienceDTO>("audience");
+  }
+
   async function getTraining() {
     return loadJson<AulaTrainingDTO>("training");
   }
@@ -35,5 +42,21 @@ export function createJsonAulaContentAdapter(): AulaContentPort {
     return loadJson<AulaPartnershipDTO>("partnership");
   }
 
-  return { getIntro, getTraining, getApproach, getPartnership };
+  async function getCta() {
+    return loadJson<AulaCtaDTO>("cta");
+  }
+
+  async function getSocials() {
+    return loadJson<AulaSocialsDTO>("socials");
+  }
+
+  return {
+    getIntro,
+    getAudience,
+    getTraining,
+    getApproach,
+    getPartnership,
+    getCta,
+    getSocials
+  };
 }

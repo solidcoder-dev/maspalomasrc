@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import type {
   AulaApproachDTO,
+  AulaAudienceDTO,
+  AulaCtaDTO,
   AulaIntroDTO,
   AulaPartnershipDTO,
+  AulaSocialsDTO,
   AulaTrainingDTO
 } from "../../domain/aula";
 import type { AulaContentPort } from "../../ports/aula-content-port";
@@ -13,9 +16,12 @@ type UseAulaPresenterConfig = {
 
 export const useAulaPresenter = ({ aulaContentPort }: UseAulaPresenterConfig) => {
   const [intro, setIntro] = useState<AulaIntroDTO | null>(null);
+  const [audience, setAudience] = useState<AulaAudienceDTO | null>(null);
   const [training, setTraining] = useState<AulaTrainingDTO | null>(null);
   const [approach, setApproach] = useState<AulaApproachDTO | null>(null);
   const [partnership, setPartnership] = useState<AulaPartnershipDTO | null>(null);
+  const [cta, setCta] = useState<AulaCtaDTO | null>(null);
+  const [socials, setSocials] = useState<AulaSocialsDTO | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,16 +32,31 @@ export const useAulaPresenter = ({ aulaContentPort }: UseAulaPresenterConfig) =>
 
     Promise.all([
       aulaContentPort.getIntro(),
+      aulaContentPort.getAudience(),
       aulaContentPort.getTraining(),
       aulaContentPort.getApproach(),
-      aulaContentPort.getPartnership()
+      aulaContentPort.getPartnership(),
+      aulaContentPort.getCta(),
+      aulaContentPort.getSocials()
     ])
-      .then(([nextIntro, nextTraining, nextApproach, nextPartnership]) => {
+      .then(
+        ([
+          nextIntro,
+          nextAudience,
+          nextTraining,
+          nextApproach,
+          nextPartnership,
+          nextCta,
+          nextSocials
+        ]) => {
         if (!active) return;
         setIntro(nextIntro);
+        setAudience(nextAudience);
         setTraining(nextTraining);
         setApproach(nextApproach);
         setPartnership(nextPartnership);
+        setCta(nextCta);
+        setSocials(nextSocials);
       })
       .catch(() => {
         if (active) setError("No pudimos cargar la información del Aula.");
@@ -49,5 +70,15 @@ export const useAulaPresenter = ({ aulaContentPort }: UseAulaPresenterConfig) =>
     };
   }, [aulaContentPort]);
 
-  return { intro, training, approach, partnership, error, isLoading };
+  return {
+    intro,
+    audience,
+    training,
+    approach,
+    partnership,
+    cta,
+    socials,
+    error,
+    isLoading
+  };
 };
