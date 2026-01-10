@@ -44,9 +44,7 @@ function JoinSection({ joinContentPort, clubName }: JoinSectionProps) {
               <JoinPaymentProcessView paymentProcess={paymentProcess} />
             </div>
           </div>
-          <div className="mt-4">
-            <JoinBankInfoView bankInfo={bankInfo} clubName={clubName} />
-          </div>
+          <JoinBankInfoView bankInfo={bankInfo} clubName={clubName} />
         </>
       )}
     </section>
