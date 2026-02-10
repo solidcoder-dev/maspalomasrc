@@ -85,10 +85,7 @@ function App() {
             <Route
               path="/unete"
               element={
-                <JoinSection
-                  joinContentPort={joinContentPort}
-                  clubName={club?.name}
-                />
+                <JoinSection joinContentPort={joinContentPort} />
               }
             />
             <Route

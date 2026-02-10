@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import type {
-  JoinBankInfoDTO,
+  JoinEnrollmentDTO,
   JoinFeesDTO,
-  JoinIntroDTO,
-  JoinPaymentProcessDTO
+  JoinIntroDTO
 } from "../../domain/joinContent";
 import type { JoinContentPort } from "../../ports/join-content-port";
 
@@ -14,8 +13,7 @@ type UseJoinPresenterConfig = {
 export const useJoinPresenter = ({ joinContentPort }: UseJoinPresenterConfig) => {
   const [intro, setIntro] = useState<JoinIntroDTO | null>(null);
   const [fees, setFees] = useState<JoinFeesDTO | null>(null);
-  const [paymentProcess, setPaymentProcess] = useState<JoinPaymentProcessDTO | null>(null);
-  const [bankInfo, setBankInfo] = useState<JoinBankInfoDTO | null>(null);
+  const [enrollment, setEnrollment] = useState<JoinEnrollmentDTO | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,21 +25,18 @@ export const useJoinPresenter = ({ joinContentPort }: UseJoinPresenterConfig) =>
     Promise.all([
       joinContentPort.getIntro(),
       joinContentPort.getFees(),
-      joinContentPort.getPaymentProcess(),
-      joinContentPort.getBankInfo()
+      joinContentPort.getEnrollment()
     ])
       .then(
         ([
           nextIntro,
           nextFees,
-          nextPaymentProcess,
-          nextBankInfo
+          nextEnrollment
         ]) => {
           if (!active) return;
           setIntro(nextIntro);
           setFees(nextFees);
-          setPaymentProcess(nextPaymentProcess);
-          setBankInfo(nextBankInfo);
+          setEnrollment(nextEnrollment);
         }
       )
       .catch(() => {
@@ -59,8 +54,7 @@ export const useJoinPresenter = ({ joinContentPort }: UseJoinPresenterConfig) =>
   return {
     intro,
     fees,
-    paymentProcess,
-    bankInfo,
+    enrollment,
     error,
     isLoading
   };

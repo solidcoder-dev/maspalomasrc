@@ -1,8 +1,7 @@
 import type {
-  JoinBankInfoDTO,
+  JoinEnrollmentDTO,
   JoinFeesDTO,
-  JoinIntroDTO,
-  JoinPaymentProcessDTO
+  JoinIntroDTO
 } from "../domain/joinContent";
 import type { JoinContentPort } from "../ports/join-content-port";
 
@@ -27,18 +26,13 @@ export function createJsonJoinContentAdapter(): JoinContentPort {
     return loadJson<JoinFeesDTO>("fees");
   }
 
-  async function getPaymentProcess() {
-    return loadJson<JoinPaymentProcessDTO>("payment-process");
-  }
-
-  async function getBankInfo() {
-    return loadJson<JoinBankInfoDTO>("bank");
+  async function getEnrollment() {
+    return loadJson<JoinEnrollmentDTO>("inscription");
   }
 
   return {
     getIntro,
     getFees,
-    getPaymentProcess,
-    getBankInfo
+    getEnrollment
   };
 }

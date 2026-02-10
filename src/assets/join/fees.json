@@ -6,13 +6,21 @@
       "label": "Externo",
       "price": "15€",
       "cadence": "al mes",
-      "description": "Para quienes entrenan con nosotros sin vínculo universitario."
+      "description": "Para quienes entrenan con nosotros sin vínculo universitario.",
+      "note": "Seguro de accidentes anual aparte de 23,50€."
     },
     {
       "label": "Universitario",
       "price": "10€",
       "cadence": "al mes",
-      "description": "Para estudiantes con matrícula universitaria vigente."
+      "description": "Para estudiantes con matrícula universitaria vigente.",
+      "note": "Seguro de accidentes anual aparte de 23,50€."
+    },
+    {
+      "label": "Socio",
+      "price": "5€",
+      "cadence": "al mes",
+      "description": "Para quienes apoyan al club sin entrenar."
     }
   ]
 }

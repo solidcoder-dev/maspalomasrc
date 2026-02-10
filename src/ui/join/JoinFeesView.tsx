@@ -33,6 +33,11 @@ function JoinFeesView({ fees }: JoinFeesViewProps) {
                     {fee.price}
                   </span>
                 </div>
+                {fee.note && (
+                  <div className="small text-body-secondary mt-2 text-md-end">
+                    {fee.note}
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -1,0 +1,33 @@
+{
+  "title": "Elige tu tipo de alta en Cluber",
+  "description": "Selecciona si quieres hacerte jugador o socio. Las cuotas siguen siendo las mismas.",
+  "options": [
+    {
+      "title": "Hazte jugador",
+      "description": "Para quienes entrenan con el equipo.",
+      "bullets": [
+        "Inscripción deportiva y acceso a entrenamientos",
+        "Cuota de jugador con los importes habituales",
+        "Registro online inmediato en Cluber"
+      ],
+      "ctaLabel": "Hazte jugador",
+      "ctaUrl": "https://app.cluber.es/clubes/698488794c6a2800603844/inscripcion"
+    },
+    {
+      "title": "Hazte socio",
+      "description": "Para quienes apoyan al club sin necesidad de entrenar.",
+      "bullets": [
+        "Alta como socio colaborador",
+        "Aportación para impulsar el club",
+        "Registro online inmediato en Cluber"
+      ],
+      "ctaLabel": "Hazte socio",
+      "ctaUrl": "https://app.cluber.es/clubes/698488794c6a2800603844/alta/socios"
+    }
+  ],
+  "importantTitle": "Importante",
+  "importantItems": [
+    "Si sois mayores de edad, vosotros mismos apareceréis como vuestros tutores legales dentro del registro.",
+    "Los universitarios de la ULPGC deben entregar cualquier justificante de matrícula para aplicar la cuota de estudiante."
+  ]
+}

@@ -10,6 +10,7 @@ export type JoinFeeDTO = {
   price: string;
   cadence: string;
   description: string;
+  note?: string;
 };
 
 export type JoinFeesDTO = {
@@ -18,16 +19,18 @@ export type JoinFeesDTO = {
   fees: JoinFeeDTO[];
 };
 
-export type JoinPaymentProcessDTO = {
-  title: string;
-  steps: string[];
-};
-
-export type JoinBankInfoDTO = {
+export type JoinEnrollmentOptionDTO = {
   title: string;
   description: string;
-  iban: string;
-  cadence: string;
-  holder?: string;
-  footnote: string;
+  bullets: string[];
+  ctaLabel: string;
+  ctaUrl: string;
+};
+
+export type JoinEnrollmentDTO = {
+  title: string;
+  description: string;
+  options: JoinEnrollmentOptionDTO[];
+  importantTitle: string;
+  importantItems: string[];
 };

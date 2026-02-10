@@ -1,13 +1,11 @@
 import type {
-  JoinBankInfoDTO,
+  JoinEnrollmentDTO,
   JoinFeesDTO,
-  JoinIntroDTO,
-  JoinPaymentProcessDTO
+  JoinIntroDTO
 } from "../domain/joinContent";
 
 export type JoinContentPort = {
   getIntro: () => Promise<JoinIntroDTO>;
   getFees: () => Promise<JoinFeesDTO>;
-  getPaymentProcess: () => Promise<JoinPaymentProcessDTO>;
-  getBankInfo: () => Promise<JoinBankInfoDTO>;
+  getEnrollment: () => Promise<JoinEnrollmentDTO>;
 };
