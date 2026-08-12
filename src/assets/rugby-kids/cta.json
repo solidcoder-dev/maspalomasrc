@@ -1,0 +1,6 @@
+{
+  "title": "¿Quieres reservar plaza?",
+  "text": "Contacta con el club para confirmar disponibilidad y reservar la plaza de tu hijo o hija.",
+  "primary": { "label": "Reserva tu plaza", "href": "/contacto" },
+  "secondary": { "label": "Contacto", "href": "/contacto" }
+}

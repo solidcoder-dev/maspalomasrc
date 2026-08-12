@@ -1,5 +1,5 @@
 import type { AulaTrainingDTO } from "../../domain/aula";
-import AulaMapView from "./AulaMapView";
+import TrainingMapView from "../shared/TrainingMapView";
 
 type AulaTrainingViewProps = {
   trainings: AulaTrainingDTO;
@@ -18,7 +18,7 @@ function AulaTrainingView({ trainings }: AulaTrainingViewProps) {
         </div>
       </div>
       <p className="text-body-emphasis mb-4">{trainings.location}</p>
-      <AulaMapView mapsUrl={trainings.mapsUrl} location={trainings.location} />
+      <TrainingMapView mapsUrl={trainings.mapsUrl} location={trainings.location} />
     </div>
   );
 }

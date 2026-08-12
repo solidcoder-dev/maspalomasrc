@@ -35,6 +35,16 @@ function NavBar({ clubName = "Club", logoUrl }: NavBarProps) {
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <NavLink
+                to="/rugby-kids"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? "active fw-semibold text-white" : ""}`
+                }
+              >
+                Rugby Kids
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
                 to="/aula"
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "active fw-semibold text-white" : ""}`

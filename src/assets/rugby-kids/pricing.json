@@ -1,0 +1,17 @@
+{
+  "title": "Precio de la actividad",
+  "options": [
+    {
+      "title": "Grupo fundador",
+      "description": "Primeras 10 plazas",
+      "price": "24 €",
+      "cadence": "al mes"
+    },
+    {
+      "title": "Cuota general",
+      "description": "A partir de la plaza 11",
+      "price": "35 €",
+      "cadence": "al mes"
+    }
+  ]
+}

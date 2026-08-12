@@ -4,6 +4,7 @@ import HomeSection from "./ui/home/HomeSection";
 import AulaSection from "./ui/aula/AulaSection";
 import ContactSection from "./ui/ContactSection";
 import JoinSection from "./ui/JoinSection";
+import RugbyKidsSection from "./ui/rugby-kids/RugbyKidsSection";
 import NavBar from "./ui/NavBar";
 import PrivacyPolicy from "./ui/PrivacyPolicy";
 import LegalNotice from "./ui/LegalNotice";
@@ -14,6 +15,7 @@ import { createEmailNotificationAdapter } from "./infrastructure/emailNotificati
 import { createJsonAulaContentAdapter } from "./infrastructure/jsonAulaContentAdapter";
 import { createJsonHomeContentAdapter } from "./infrastructure/jsonHomeContentAdapter";
 import { createJsonJoinContentAdapter } from "./infrastructure/jsonJoinContentAdapter";
+import { createJsonRugbyKidsContentAdapter } from "./infrastructure/jsonRugbyKidsContentAdapter";
 import type { Club } from "./domain/club";
 import { createSubmitContactUseCase } from "./application/contact/submitContactUseCase";
 
@@ -23,6 +25,7 @@ function App() {
   const homeContentPort = useMemo(() => createJsonHomeContentAdapter(), []);
   const aulaContentPort = useMemo(() => createJsonAulaContentAdapter(), []);
   const joinContentPort = useMemo(() => createJsonJoinContentAdapter(), []);
+  const rugbyKidsContentPort = useMemo(() => createJsonRugbyKidsContentAdapter(), []);
   const contactNotificationPort = useMemo(
     () =>
       createEmailNotificationAdapter({
@@ -72,6 +75,19 @@ function App() {
             <Route
               path="/aula"
               element={<AulaSection aulaContentPort={aulaContentPort} />}
+            />
+            <Route
+              path="/rugby-kids"
+              element={
+                club ? (
+                  <RugbyKidsSection
+                    rugbyKidsContentPort={rugbyKidsContentPort}
+                    training={club.training}
+                  />
+                ) : (
+                  <p className="text-body-secondary mb-3">Cargando información...</p>
+                )
+              }
             />
             <Route
               path="/contacto"
