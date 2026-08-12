@@ -4,6 +4,7 @@ import type {
   HomeInclusionDTO,
   HomeIntroDTO,
   HomePartnershipDTO,
+  HomeRugbyKidsPromoDTO,
   HomeSponsorsDTO,
   HomeSocialsDTO,
   HomeTrainingDTO,
@@ -12,6 +13,7 @@ import type {
 
 export type HomeContentPort = {
   getIntro: () => Promise<HomeIntroDTO>;
+  getRugbyKidsPromo: () => Promise<HomeRugbyKidsPromoDTO>;
   getPartnership: () => Promise<HomePartnershipDTO>;
   getValues: () => Promise<HomeValuesDTO>;
   getCompetition: () => Promise<HomeCompetitionDTO>;

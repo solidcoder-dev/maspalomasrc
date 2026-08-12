@@ -4,6 +4,7 @@ import type {
   HomeInclusionDTO,
   HomeIntroDTO,
   HomePartnershipDTO,
+  HomeRugbyKidsPromoDTO,
   HomeSponsorsDTO,
   HomeSocialsDTO,
   HomeTrainingDTO,
@@ -26,6 +27,10 @@ const loadJson = async <T,>(name: string): Promise<T> => {
 export function createJsonHomeContentAdapter(): HomeContentPort {
   async function getIntro() {
     return loadJson<HomeIntroDTO>("intro");
+  }
+
+  async function getRugbyKidsPromo() {
+    return loadJson<HomeRugbyKidsPromoDTO>("rugby-kids");
   }
 
   async function getPartnership() {
@@ -62,6 +67,7 @@ export function createJsonHomeContentAdapter(): HomeContentPort {
 
   return {
     getIntro,
+    getRugbyKidsPromo,
     getPartnership,
     getValues,
     getCompetition,

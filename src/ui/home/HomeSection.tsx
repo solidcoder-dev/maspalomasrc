@@ -4,6 +4,7 @@ import HomeCtaView from "./HomeCtaView";
 import HomeInclusionView from "./HomeInclusionView";
 import HomeIntroView from "./HomeIntroView";
 import HomePartnershipView from "./HomePartnershipView";
+import HomeRugbyKidsView from "./HomeRugbyKidsView";
 import HomeSponsorsView from "./HomeSponsorsView";
 import HomeSocialsView from "./HomeSocialsView";
 import HomeTrainingView from "./HomeTrainingView";
@@ -17,6 +18,7 @@ type HomeSectionProps = {
 function HomeSection({ homeContentPort }: HomeSectionProps) {
   const {
     intro,
+    rugbyKidsPromo,
     partnership,
     values,
     competition,
@@ -40,6 +42,7 @@ function HomeSection({ homeContentPort }: HomeSectionProps) {
         <p className="text-body-secondary mb-3">Cargando información...</p>
       )}
       {intro &&
+        rugbyKidsPromo &&
         partnership &&
         values &&
         competition &&
@@ -51,6 +54,7 @@ function HomeSection({ homeContentPort }: HomeSectionProps) {
         !error && (
           <>
             <HomeIntroView intro={intro} />
+            <HomeRugbyKidsView promo={rugbyKidsPromo} />
             <div className="mb-4">
               <HomeCtaView cta={cta} />
             </div>

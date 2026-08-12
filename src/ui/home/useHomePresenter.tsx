@@ -5,6 +5,7 @@ import type {
   HomeInclusionDTO,
   HomeIntroDTO,
   HomePartnershipDTO,
+  HomeRugbyKidsPromoDTO,
   HomeSponsorsDTO,
   HomeSocialsDTO,
   HomeTrainingDTO,
@@ -19,6 +20,7 @@ type UseHomePresenterConfig = {
 export const useHomePresenter = ({ homeContentPort }: UseHomePresenterConfig) => {
   const [intro, setIntro] = useState<HomeIntroDTO | null>(null);
   const [partnership, setPartnership] = useState<HomePartnershipDTO | null>(null);
+  const [rugbyKidsPromo, setRugbyKidsPromo] = useState<HomeRugbyKidsPromoDTO | null>(null);
   const [values, setValues] = useState<HomeValuesDTO | null>(null);
   const [competition, setCompetition] = useState<HomeCompetitionDTO | null>(null);
   const [training, setTraining] = useState<HomeTrainingDTO | null>(null);
@@ -36,6 +38,7 @@ export const useHomePresenter = ({ homeContentPort }: UseHomePresenterConfig) =>
 
     Promise.all([
       homeContentPort.getIntro(),
+      homeContentPort.getRugbyKidsPromo(),
       homeContentPort.getPartnership(),
       homeContentPort.getValues(),
       homeContentPort.getCompetition(),
@@ -48,6 +51,7 @@ export const useHomePresenter = ({ homeContentPort }: UseHomePresenterConfig) =>
       .then(
         ([
           nextIntro,
+          nextRugbyKidsPromo,
           nextPartnership,
           nextValues,
           nextCompetition,
@@ -59,6 +63,7 @@ export const useHomePresenter = ({ homeContentPort }: UseHomePresenterConfig) =>
         ]) => {
           if (!active) return;
           setIntro(nextIntro);
+          setRugbyKidsPromo(nextRugbyKidsPromo);
           setPartnership(nextPartnership);
           setValues(nextValues);
           setCompetition(nextCompetition);
@@ -83,6 +88,7 @@ export const useHomePresenter = ({ homeContentPort }: UseHomePresenterConfig) =>
 
   return {
     intro,
+    rugbyKidsPromo,
     partnership,
     values,
     competition,

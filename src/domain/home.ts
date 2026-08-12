@@ -4,6 +4,15 @@ export type HomeIntroDTO = {
   description: string;
 };
 
+export type HomeRugbyKidsPromoDTO = {
+  label: string;
+  title: string;
+  description: string;
+  age: string;
+  ctaLabel: string;
+  ctaHref: string;
+};
+
 export type HomePartnershipDTO = {
   title: string;
   description: string;
