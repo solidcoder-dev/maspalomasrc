@@ -18,7 +18,12 @@ function RugbyKidsSection({ rugbyKidsContentPort, training }: RugbyKidsSectionPr
       "Rugby para niños y niñas de 10 a 16 años en Las Palmas de Gran Canaria. Entrenamientos en el Campus de Tafira.";
     const previousTitle = document.title;
     const previousMeta = new Map<string, string | null>();
+    const previousCanonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    const canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    canonical.href = `${window.location.origin}${import.meta.env.BASE_URL}rugby-kids`;
     document.title = title;
+    document.head.appendChild(canonical);
 
     const setMeta = (attribute: "name" | "property", key: string, content: string) => {
       let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);
@@ -48,12 +53,14 @@ function RugbyKidsSection({ rugbyKidsContentPort, training }: RugbyKidsSectionPr
         addressLocality: "Las Palmas de Gran Canaria",
         addressCountry: "ES"
       },
-      url: `${window.location.origin}${window.location.pathname}#/rugby-kids`
+      url: `${window.location.origin}${import.meta.env.BASE_URL}rugby-kids`
     });
     document.head.appendChild(structuredData);
 
     return () => {
       structuredData.remove();
+      canonical.remove();
+      if (previousCanonical) document.head.appendChild(previousCanonical);
       document.title = previousTitle;
       previousMeta.forEach((previousContent, selector) => {
         const [attribute, key] = selector.split(":");

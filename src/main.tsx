@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "@tenant-theme";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -13,11 +13,12 @@ if (!container) {
 }
 
 const root = createRoot(container);
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 root.render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter basename={basename}>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>
 );

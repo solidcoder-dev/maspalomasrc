@@ -23,6 +23,19 @@
       content="/src/assets/club-logos/maspalomasrc.png"
     />
     <meta property="og:type" content="website" />
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var route = params.get("p");
+        if (!route) return;
+
+        var base = window.location.pathname.replace(/\/$/, "");
+        var query = params.get("q");
+        var destination = base + route;
+        if (query) destination += "?" + query;
+        window.history.replaceState(null, "", destination);
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SN2PL6NYH5"></script>
     <script>

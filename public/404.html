@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Club de Rugby Maspalomas</title>
+    <script>
+      (function () {
+        var location = window.location;
+        var segments = location.pathname.split("/");
+        var project = segments[1] || "";
+        var route = "/" + segments.slice(2).join("/");
+        var query = location.search ? "&q=" + encodeURIComponent(location.search.slice(1)) : "";
+        var target = location.protocol + "//" + location.host + "/" + project + "/?p=" + encodeURIComponent(route) + query + location.hash;
+        location.replace(target);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Cargando la página...</p>
+  </body>
+</html>
