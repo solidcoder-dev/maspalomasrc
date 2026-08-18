@@ -30,7 +30,7 @@ function AulaSection({ aulaContentPort, initialData }: AulaSectionProps) {
   return (
     <section>
       <div className="d-flex flex-wrap align-items-center gap-2 mb-4">
-        <h1 className="h4 fw-bold mb-0">Aula de Rugby</h1>
+        <h1 className="h4 fw-bold mb-0">Aula de rugby en Las Palmas de Gran Canaria</h1>
         <span className="badge bg-primary-subtle text-primary-emphasis">
           Formación
         </span>
