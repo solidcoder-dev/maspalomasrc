@@ -12,20 +12,32 @@ import type { AulaContentPort } from "../../ports/aula-content-port";
 
 type UseAulaPresenterConfig = {
   aulaContentPort: AulaContentPort;
+  initialData?: AulaPresenterData;
 };
 
-export const useAulaPresenter = ({ aulaContentPort }: UseAulaPresenterConfig) => {
-  const [intro, setIntro] = useState<AulaIntroDTO | null>(null);
-  const [audience, setAudience] = useState<AulaAudienceDTO | null>(null);
-  const [training, setTraining] = useState<AulaTrainingDTO | null>(null);
-  const [approach, setApproach] = useState<AulaApproachDTO | null>(null);
-  const [partnership, setPartnership] = useState<AulaPartnershipDTO | null>(null);
-  const [cta, setCta] = useState<AulaCtaDTO | null>(null);
-  const [socials, setSocials] = useState<AulaSocialsDTO | null>(null);
+export type AulaPresenterData = {
+  intro: AulaIntroDTO;
+  audience: AulaAudienceDTO;
+  training: AulaTrainingDTO;
+  approach: AulaApproachDTO;
+  partnership: AulaPartnershipDTO;
+  cta: AulaCtaDTO;
+  socials: AulaSocialsDTO;
+};
+
+export const useAulaPresenter = ({ aulaContentPort, initialData }: UseAulaPresenterConfig) => {
+  const [intro, setIntro] = useState<AulaIntroDTO | null>(initialData?.intro ?? null);
+  const [audience, setAudience] = useState<AulaAudienceDTO | null>(initialData?.audience ?? null);
+  const [training, setTraining] = useState<AulaTrainingDTO | null>(initialData?.training ?? null);
+  const [approach, setApproach] = useState<AulaApproachDTO | null>(initialData?.approach ?? null);
+  const [partnership, setPartnership] = useState<AulaPartnershipDTO | null>(initialData?.partnership ?? null);
+  const [cta, setCta] = useState<AulaCtaDTO | null>(initialData?.cta ?? null);
+  const [socials, setSocials] = useState<AulaSocialsDTO | null>(initialData?.socials ?? null);
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!initialData);
 
   useEffect(() => {
+    if (initialData) return;
     let active = true;
     setError(null);
     setIsLoading(true);
@@ -68,7 +80,7 @@ export const useAulaPresenter = ({ aulaContentPort }: UseAulaPresenterConfig) =>
     return () => {
       active = false;
     };
-  }, [aulaContentPort]);
+  }, [aulaContentPort, initialData]);
 
   return {
     intro,

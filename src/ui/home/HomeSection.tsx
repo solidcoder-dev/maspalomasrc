@@ -9,13 +9,14 @@ import HomeSponsorsView from "./HomeSponsorsView";
 import HomeSocialsView from "./HomeSocialsView";
 import HomeTrainingView from "./HomeTrainingView";
 import HomeValuesView from "./HomeValuesView";
-import { useHomePresenter } from "./useHomePresenter";
+import { useHomePresenter, type HomePresenterData } from "./useHomePresenter";
 
 type HomeSectionProps = {
   homeContentPort: HomeContentPort;
+  initialData?: HomePresenterData;
 };
 
-function HomeSection({ homeContentPort }: HomeSectionProps) {
+function HomeSection({ homeContentPort, initialData }: HomeSectionProps) {
   const {
     intro,
     rugbyKidsPromo,
@@ -29,7 +30,7 @@ function HomeSection({ homeContentPort }: HomeSectionProps) {
     socials,
     error,
     isLoading
-  } = useHomePresenter({ homeContentPort });
+  } = useHomePresenter({ homeContentPort, initialData });
 
   return (
     <section>

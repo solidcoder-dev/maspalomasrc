@@ -8,16 +8,24 @@ import type { JoinContentPort } from "../../ports/join-content-port";
 
 type UseJoinPresenterConfig = {
   joinContentPort: JoinContentPort;
+  initialData?: JoinPresenterData;
 };
 
-export const useJoinPresenter = ({ joinContentPort }: UseJoinPresenterConfig) => {
-  const [intro, setIntro] = useState<JoinIntroDTO | null>(null);
-  const [fees, setFees] = useState<JoinFeesDTO | null>(null);
-  const [enrollment, setEnrollment] = useState<JoinEnrollmentDTO | null>(null);
+export type JoinPresenterData = {
+  intro: JoinIntroDTO;
+  fees: JoinFeesDTO;
+  enrollment: JoinEnrollmentDTO;
+};
+
+export const useJoinPresenter = ({ joinContentPort, initialData }: UseJoinPresenterConfig) => {
+  const [intro, setIntro] = useState<JoinIntroDTO | null>(initialData?.intro ?? null);
+  const [fees, setFees] = useState<JoinFeesDTO | null>(initialData?.fees ?? null);
+  const [enrollment, setEnrollment] = useState<JoinEnrollmentDTO | null>(initialData?.enrollment ?? null);
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!initialData);
 
   useEffect(() => {
+    if (initialData) return;
     let active = true;
     setError(null);
     setIsLoading(true);
@@ -49,7 +57,7 @@ export const useJoinPresenter = ({ joinContentPort }: UseJoinPresenterConfig) =>
     return () => {
       active = false;
     };
-  }, [joinContentPort]);
+  }, [joinContentPort, initialData]);
 
   return {
     intro,

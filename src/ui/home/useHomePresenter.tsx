@@ -15,23 +15,38 @@ import type { HomeContentPort } from "../../ports/home-content-port";
 
 type UseHomePresenterConfig = {
   homeContentPort: HomeContentPort;
+  initialData?: HomePresenterData;
 };
 
-export const useHomePresenter = ({ homeContentPort }: UseHomePresenterConfig) => {
-  const [intro, setIntro] = useState<HomeIntroDTO | null>(null);
-  const [partnership, setPartnership] = useState<HomePartnershipDTO | null>(null);
-  const [rugbyKidsPromo, setRugbyKidsPromo] = useState<HomeRugbyKidsPromoDTO | null>(null);
-  const [values, setValues] = useState<HomeValuesDTO | null>(null);
-  const [competition, setCompetition] = useState<HomeCompetitionDTO | null>(null);
-  const [training, setTraining] = useState<HomeTrainingDTO | null>(null);
-  const [inclusion, setInclusion] = useState<HomeInclusionDTO | null>(null);
-  const [sponsors, setSponsors] = useState<HomeSponsorsDTO | null>(null);
-  const [cta, setCta] = useState<HomeCtaDTO | null>(null);
-  const [socials, setSocials] = useState<HomeSocialsDTO | null>(null);
+export type HomePresenterData = {
+  intro: HomeIntroDTO;
+  rugbyKidsPromo: HomeRugbyKidsPromoDTO;
+  partnership: HomePartnershipDTO;
+  values: HomeValuesDTO;
+  competition: HomeCompetitionDTO;
+  training: HomeTrainingDTO;
+  inclusion: HomeInclusionDTO;
+  sponsors: HomeSponsorsDTO;
+  cta: HomeCtaDTO;
+  socials: HomeSocialsDTO;
+};
+
+export const useHomePresenter = ({ homeContentPort, initialData }: UseHomePresenterConfig) => {
+  const [intro, setIntro] = useState<HomeIntroDTO | null>(initialData?.intro ?? null);
+  const [partnership, setPartnership] = useState<HomePartnershipDTO | null>(initialData?.partnership ?? null);
+  const [rugbyKidsPromo, setRugbyKidsPromo] = useState<HomeRugbyKidsPromoDTO | null>(initialData?.rugbyKidsPromo ?? null);
+  const [values, setValues] = useState<HomeValuesDTO | null>(initialData?.values ?? null);
+  const [competition, setCompetition] = useState<HomeCompetitionDTO | null>(initialData?.competition ?? null);
+  const [training, setTraining] = useState<HomeTrainingDTO | null>(initialData?.training ?? null);
+  const [inclusion, setInclusion] = useState<HomeInclusionDTO | null>(initialData?.inclusion ?? null);
+  const [sponsors, setSponsors] = useState<HomeSponsorsDTO | null>(initialData?.sponsors ?? null);
+  const [cta, setCta] = useState<HomeCtaDTO | null>(initialData?.cta ?? null);
+  const [socials, setSocials] = useState<HomeSocialsDTO | null>(initialData?.socials ?? null);
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!initialData);
 
   useEffect(() => {
+    if (initialData) return;
     let active = true;
     setError(null);
     setIsLoading(true);
@@ -84,7 +99,7 @@ export const useHomePresenter = ({ homeContentPort }: UseHomePresenterConfig) =>
     return () => {
       active = false;
     };
-  }, [homeContentPort]);
+  }, [homeContentPort, initialData]);
 
   return {
     intro,

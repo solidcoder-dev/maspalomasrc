@@ -2,20 +2,21 @@ import type { JoinContentPort } from "../ports/join-content-port";
 import JoinEnrollmentView from "./join/JoinEnrollmentView";
 import JoinFeesView from "./join/JoinFeesView";
 import JoinIntroView from "./join/JoinIntroView";
-import { useJoinPresenter } from "./join/useJoinPresenter";
+import { useJoinPresenter, type JoinPresenterData } from "./join/useJoinPresenter";
 
 type JoinSectionProps = {
   joinContentPort: JoinContentPort;
+  initialData?: JoinPresenterData;
 };
 
-function JoinSection({ joinContentPort }: JoinSectionProps) {
+function JoinSection({ joinContentPort, initialData }: JoinSectionProps) {
   const {
     intro,
     fees,
     enrollment,
     error,
     isLoading
-  } = useJoinPresenter({ joinContentPort });
+  } = useJoinPresenter({ joinContentPort, initialData });
 
   return (
     <section>

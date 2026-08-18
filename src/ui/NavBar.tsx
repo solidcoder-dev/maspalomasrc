@@ -1,5 +1,5 @@
+import { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "bootstrap/js/dist/collapse";
 
 type NavBarProps = {
   clubName?: string;
@@ -7,6 +7,10 @@ type NavBarProps = {
 };
 
 function NavBar({ clubName = "Club", logoUrl }: NavBarProps) {
+  useEffect(() => {
+    void import("bootstrap/js/dist/collapse");
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-4 sticky-top shadow-sm">
       <div className="container">

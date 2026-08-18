@@ -6,13 +6,14 @@ import AulaIntroView from "./AulaIntroView";
 import AulaPartnershipView from "./AulaPartnershipView";
 import AulaSocialsView from "./AulaSocialsView";
 import AulaTrainingView from "./AulaTrainingView";
-import { useAulaPresenter } from "./useAulaPresenter";
+import { useAulaPresenter, type AulaPresenterData } from "./useAulaPresenter";
 
 type AulaSectionProps = {
   aulaContentPort: AulaContentPort;
+  initialData?: AulaPresenterData;
 };
 
-function AulaSection({ aulaContentPort }: AulaSectionProps) {
+function AulaSection({ aulaContentPort, initialData }: AulaSectionProps) {
   const {
     intro,
     audience,
@@ -24,7 +25,7 @@ function AulaSection({ aulaContentPort }: AulaSectionProps) {
     error,
     isLoading
   } =
-    useAulaPresenter({ aulaContentPort });
+    useAulaPresenter({ aulaContentPort, initialData });
 
   return (
     <section>

@@ -1,0 +1,15 @@
+[
+  {
+    "path": "/",
+    "title": "Club de Rugby Maspalomas | Rugby en Gran Canaria",
+    "description": "Club de rugby en Gran Canaria. Entrenamiento, formación y competición para todos los niveles en Maspalomas.",
+    "indexable": true,
+    "schema": { "type": "SportsClub", "name": "Club de Rugby Maspalomas", "sport": "Rugby", "email": "clubderugbymaspalomas@gmail.com", "streetAddress": "Av. de Tenerife, 19, Puerta 53", "addressLocality": "Playa del Inglés", "postalCode": "35100", "addressRegion": "Las Palmas", "addressCountry": "ES", "sameAs": ["https://www.instagram.com/club_de_rugby_maspalomas"] }
+  },
+  { "path": "/aula", "title": "Aula de Rugby en Gran Canaria | Club de Rugby Maspalomas", "description": "Aula de Rugby del Club de Rugby Maspalomas: formación y entrenamiento de rugby en colaboración con la ULPGC.", "indexable": true, "schema": { "type": "Course", "name": "Aula de Rugby", "description": "Actividad de formación y entrenamiento de rugby en colaboración con la Universidad de Las Palmas de Gran Canaria.", "courseMode": "onsite", "about": "Rugby" } },
+  { "path": "/rugby-kids", "title": "Rugby infantil en Gran Canaria | Rugby Kids", "description": "Rugby para niños y niñas de 10 a 16 años en Gran Canaria. Consulta horarios, precios y entrenamientos.", "indexable": true, "schema": { "type": "Course", "name": "Rugby infantil en Gran Canaria", "description": "Rugby para niños y niñas de 10 a 16 años en Gran Canaria.", "courseMode": "onsite", "about": "Rugby" } },
+  { "path": "/contacto", "title": "Contacto | Club de Rugby Maspalomas", "description": "Contacta con el Club de Rugby Maspalomas para resolver dudas sobre entrenamientos, rugby infantil y altas.", "indexable": true, "schema": { "type": "ContactPage" } },
+  { "path": "/unete", "title": "Únete al Club de Rugby Maspalomas", "description": "Consulta las cuotas y el proceso para entrenar o hacerte socio del Club de Rugby Maspalomas.", "indexable": true, "schema": { "type": "WebPage" } },
+  { "path": "/privacidad", "title": "Política de privacidad | Club de Rugby Maspalomas", "description": "Política de privacidad del Club de Rugby Maspalomas.", "indexable": false, "schema": { "type": "WebPage" } },
+  { "path": "/aviso-legal", "title": "Aviso legal | Club de Rugby Maspalomas", "description": "Aviso legal del Club de Rugby Maspalomas.", "indexable": false, "schema": { "type": "WebPage" } }
+]

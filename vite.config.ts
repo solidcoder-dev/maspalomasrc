@@ -14,14 +14,19 @@ export default defineConfig(({ mode }) => {
     ? themePath
     : path.resolve(__dirname, "src/styles/default.scss");
 
+  const basePath = env.VITE_BASE_PATH || `/${tenant}/`;
+
   return {
-    base: `/${tenant}/`, // GitHub Pages (project pages): https://solidcoder-dev.github.io/club-ui/
+    base: basePath.endsWith("/") ? basePath : `${basePath}/`,
     resolve: {
       alias: {
         "@tenant-theme": resolvedTheme
       }
     },
     plugins: [react()],
+    ssgOptions: {
+      dirStyle: "nested"
+    },
     server: {
       port: 5173
     }

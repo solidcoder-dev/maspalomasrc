@@ -4,7 +4,8 @@ import type { ClubPort } from "../ports/club-port";
 const clubFiles = import.meta.glob("../data/*.json");
 const logoFiles = import.meta.glob("../assets/club-logos/*", {
   eager: true,
-  as: "url"
+  query: "?url",
+  import: "default"
 });
 
 const resolveLogoUrl = (logoFile?: string) => {
