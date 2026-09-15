@@ -34,12 +34,16 @@ export type RugbyKidsInsuranceDTO = {
 
 export type RugbyKidsCtaDTO = {
   title: string;
-  text: string;
+  description: string;
   primary: {
     label: string;
     href: string;
   };
   secondary: {
+    label: string;
+    href: string;
+  };
+  tertiary: {
     label: string;
     href: string;
   };

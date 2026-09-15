@@ -1,6 +1,7 @@
 {
-  "title": "¿Quieres reservar plaza?",
-  "text": "Contacta con el club para confirmar disponibilidad y reservar la plaza de tu hijo o hija.",
-  "primary": { "label": "Reserva tu plaza", "href": "/contacto" },
-  "secondary": { "label": "Contacto", "href": "/contacto" }
+  "title": "¿Quieres participar?",
+  "description": "Si quieres unirte al club o resolver dudas sobre Rugby Kids, contacta con nosotros o envía tu solicitud.",
+  "primary": { "label": "Únete al club", "href": "/unete" },
+  "secondary": { "label": "Contactar", "href": "/contacto" },
+  "tertiary": { "label": "Haz una prueba gratuita", "href": "/contacto" }
 }

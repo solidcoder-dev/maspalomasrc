@@ -3,11 +3,11 @@
   "seasons": [
     {
       "name": "Septiembre",
-      "sessions": ["Miércoles: 17:00–18:00", "Viernes: 19:00–20:00"]
+      "sessions": ["Lunes: 17:00–18:00", "Miércoles: 17:00–18:00"]
     },
     {
       "name": "Resto de la temporada",
-      "sessions": ["Miércoles: 17:30–19:00", "Viernes: 19:00–20:30"]
+      "sessions": ["Lunes: 17:30–19:00", "Miércoles: 17:30–19:00"]
     }
   ]
 }

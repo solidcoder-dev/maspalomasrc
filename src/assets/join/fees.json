@@ -21,6 +21,20 @@
       "price": "5€",
       "cadence": "al mes",
       "description": "Para quienes apoyan al club sin entrenar."
+    },
+    {
+      "label": "Rugby Kids · Grupo fundador",
+      "price": "24€",
+      "cadence": "al mes",
+      "description": "Cuota de Rugby Kids para niños y niñas de 10 a 16 años, disponible para las primeras 10 plazas.",
+      "note": "Seguro federativo anual aparte de 95€."
+    },
+    {
+      "label": "Rugby Kids · Cuota general",
+      "price": "35€",
+      "cadence": "al mes",
+      "description": "Cuota de Rugby Kids para niños y niñas de 10 a 16 años, a partir de la plaza 11.",
+      "note": "Seguro federativo anual aparte de 95€."
     }
   ]
 }
