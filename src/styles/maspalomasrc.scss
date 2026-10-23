@@ -7,3 +7,44 @@ $card-bg: #ffffff;
 $card-border-color: #e2e8f0;
 
 @import "bootstrap/scss/bootstrap";
+
+.conocenos-page {
+  padding: 0 0 1rem;
+}
+
+.conocenos-hero {
+  background-color: $primary;
+}
+
+.conocenos-hero__image {
+  height: 17rem;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.conocenos-content {
+  max-width: 38rem;
+  padding: 2.25rem 0.5rem 0.75rem;
+}
+
+.conocenos-eyebrow {
+  color: $primary;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+@media (min-width: 768px) {
+  .conocenos-page {
+    padding-bottom: 2rem;
+  }
+
+  .conocenos-hero__image {
+    height: 24rem;
+    object-position: center 58%;
+  }
+
+  .conocenos-content {
+    padding-top: 2.75rem;
+  }
+}

@@ -11,6 +11,7 @@ import RugbyKidsSection from "./rugby-kids/RugbyKidsSection";
 import ContactSection from "./ContactSection";
 import PrivacyPolicy from "./PrivacyPolicy";
 import LegalNotice from "./LegalNotice";
+import ConocenosSection from "./ConocenosSection";
 import AppLayout from "./AppLayout";
 import { AppServicesProvider, useAppServices } from "./AppServicesProvider";
 import { useTypedLoaderData } from "./routing/useTypedLoaderData";
@@ -38,6 +39,7 @@ export function createRoutes(dependencies: AppDependencies): RouteRecord[] {
       { path: "aula", loader: () => loadAulaPage(dependencies.aulaContentPort), element: <AulaRoute /> },
       { path: "rugby-kids", loader: () => loadRugbyKidsPage(dependencies.rugbyKidsContentPort), element: <RugbyKidsRoute /> },
       { path: "contacto", element: <ContactRoute /> },
+      { path: "conocenos", element: <ConocenosSection /> },
       { path: "unete", loader: () => loadJoinPage(dependencies.joinContentPort), element: <JoinRoute /> },
       { path: "privacidad", element: <PrivacyRoute /> },
       { path: "aviso-legal", element: <LegalRoute /> }
