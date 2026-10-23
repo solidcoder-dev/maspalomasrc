@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import groupPhoto from "../assets/conocenos/141758.jpg";
+import groupPhoto from "../assets/conocenos/141758-blurred.png";
 import socials from "../assets/home/socials.json";
 
 const instagramUrl = socials.links.find(({ label }) => label === "Instagram")?.href;
